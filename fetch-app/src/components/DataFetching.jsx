@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import img from "../images/nyc.jpg";
 
 function DataFetching() {
     const [posts, setPosts] = useState([]);
@@ -9,7 +10,7 @@ function DataFetching() {
             .get("https://jsonplaceholder.typicode.com/posts")
             .then((res) => {
                 console.log(res);
-                setPosts(res.data)
+                setPosts(res.data);
             })
             .catch((err) => {
                 console.log(err);
@@ -19,7 +20,17 @@ function DataFetching() {
         <div>
             <ul>
                 {posts.map((post) => (
-                    <li key={post.id}>{post.title}</li>
+                    <li key={post.id}>
+                        {" "}
+                        {post.title}{" "}
+                        <img
+                            src={img}
+                            alt="img"
+                            style={{
+                                width: "200px",
+                            }}
+                        />
+                    </li>
                 ))}
             </ul>
         </div>
